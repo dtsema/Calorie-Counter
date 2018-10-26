@@ -1,0 +1,41 @@
+.root{
+	-fx-background-color: linear-gradient(to bottom right, #ffffff, #80bfff);
+}
+.label{
+	-fx-font-size: 15px;
+	-fx-font-family: "Arial";
+	
+	
+}
+.button{
+	-fx-background-color: linear-gradient(#ffffff, #cce6ff)
+}
+.button:hover{
+	-fx-background-color: linear-gradient(#e6f2ff, #b3d9ff)
+}
+.text-input{
+	-fx-text-fill: #0059b3;
+}
+
+.table-view .table-row-cell {
+    -fx-control-inner-background: #76d8e8;
+    -fx-control-inner-background-alt: #b1eff9;
+}
+
+#button-left{
+	-fx-graphic: url("/images/button.png"); 
+	-fx-border-radius: 30;
+	-fx-background-radius: 30;
+	
+}
+
+
+#button-right{
+	-fx-graphic: url("/images/button1.png"); 
+	-fx-border-radius: 100;
+	-fx-background-color: transparent;
+}
+
+#label-month{
+	-fx-text-fill: "White";
+}

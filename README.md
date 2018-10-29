@@ -15,4 +15,6 @@ your tracked calories and percentages.
 
 ![alt text](https://i.imgur.com/sMERWCa.png)
 
+![alt text](https://i.imgur.com/9xWUxAw.png)
 
+![alt text](https://i.imgur.com/4Qaxxb1.png)

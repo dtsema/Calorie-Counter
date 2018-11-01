@@ -9,6 +9,20 @@ line chart that serves as a visual aid for your daily caloric intake. You can al
 your tracked calories and percentages.
 
 
+Features:
+* Uses your age, gender, and activity level to calculate recommended daily calories
+* Creates an individual user account with username and encrypted password
+* Stores user's recommended daily caloric intake
+* Login if account has previously been created
+* Customize your list of foods consumed by adding and deleting from graph
+* Add calorie amount and servings per food item
+* Submit graph to store and view calories consumed and % of daily value
+* Open calendar to view daily calorie intake and % daily value for each month
+* Open line chart to view your monthly stored % data
+
+
+
+
 ![alt text](https://i.imgur.com/i7oghfj.png?2)
 
 ![alt text](https://i.imgur.com/WkSwfSR.png)

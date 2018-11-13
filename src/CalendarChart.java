@@ -1,7 +1,5 @@
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -51,9 +49,7 @@ public class CalendarChart {
 		
 	public void createCalendarChartWindow(String userName){
 		this.userName = userName;
-		try{
-			createStage();
-		
+		createStage();
 		   
 		createFormattedTopBanner();
 		
@@ -71,19 +67,8 @@ public class CalendarChart {
 		
 		changeMonthAndDataOnClick();
 		
-		setStage();}
-		catch(Exception e){
-			try {
-				FileWriter fw = new FileWriter("log.txt");
-				BufferedWriter bw = new BufferedWriter(fw);
-				fw.write(e.toString());
-				fw.close();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-		}
+		setStage();
+		
 	}
 	
 	private void createStage(){
@@ -232,19 +217,6 @@ public class CalendarChart {
 		}
 	}
 	
-
-	
-	/*private void loadProperties() {
-		propSum = new Properties();
-		propPercent = new Properties();
-		inputSum = null;
-		inputPercent = null;
-		inputSum = new FileInputStream(userName+ "Sum.properties");
-		inputPercent = new FileInputStream(userName+ "Percent.properties");
-		propSum.load(inputSum);
-		propPercent.load(inputPercent);
-		
-	}*/
 	
 	private void propertiesIntoMap(){
 		dateSumPercentMap = new HashMap<String, String>();

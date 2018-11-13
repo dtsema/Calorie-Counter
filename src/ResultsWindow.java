@@ -134,50 +134,51 @@ public class ResultsWindow {
 		
 		try {
 			
-		try{inputSum = new FileInputStream(nameField + "Sum.properties");
-		prop.load(inputSum);
-		prop.remove(date);}catch(FileNotFoundException e){
+			try{
+				inputSum = new FileInputStream(nameField + "Sum.properties");
+				prop.load(inputSum);
+				prop.remove(date);
+				}
+			catch(FileNotFoundException e){	
+			}
+		
+			oS = new FileOutputStream(nameField + "Sum.properties");
+			prop.store(oS, null);
+		
+			try{
+				inputSum1 = new FileInputStream(nameField + "Percent.properties");
+				prop1.load(inputSum1);
+				prop1.remove(date);}catch(FileNotFoundException e){
+			}
 			
-		}
+			oS1 = new FileOutputStream(nameField + "Percent.properties");
+			prop1.store(oS1, null);
 		
-		oS = new FileOutputStream(nameField + "Sum.properties");
-		prop.store(oS, null);
-		
-		
-		try{inputSum1 = new FileInputStream(nameField + "Percent.properties");
-		prop1.load(inputSum1);
-		prop1.remove(date);}catch(FileNotFoundException e){
-			
-		}
-		
-		oS1 = new FileOutputStream(nameField + "Percent.properties");
-		prop1.store(oS1, null);
-		
-			
 			FileWriter fileWritter = new FileWriter(nameField + "Sum.properties", true);
 			BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
 			bufferWritter.append(date+"="+Integer.toString(foodCalories)+ System.lineSeparator());
 			bufferWritter.close();
 		
-			
 			FileWriter fileWritter1 = new FileWriter(nameField + "Percent.properties", true);
 			BufferedWriter bufferWritter1 = new BufferedWriter(fileWritter1);
 			bufferWritter1.append(date+"="+dvPercentFormatted+System.lineSeparator());
 			bufferWritter1.close();
 			
-			
-			
-		}catch(IOException io){
+		}
+		catch(IOException io){
 			io.printStackTrace();
-		}finally{if (oS != null && oS1 != null) {
+		}
+		finally{
+			if (oS != null && oS1 != null) {
 			try {
 				oS.close();
 				oS1.close();
 			} catch (IOException e) {
 				e.printStackTrace();
+				}
 			}
 		}
-	}}
+	}
 	
 	
 	private void createSetScene(){

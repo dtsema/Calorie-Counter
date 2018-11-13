@@ -19,16 +19,14 @@ import javafx.util.Pair;
 public class LineChartPage {
 	int position;
 	private VBox vBox;
-	private String userName;
+	private String userName, storedMonth;
 	private LineChart<Number, Number> lineChart;
 	XYChart.Series<Number, Number> series; 
-	public ArrayList<LinkedHashMap<String, String>> mapList;
 	private Position monthPosition;
 	ArrayList<Pair<Integer, Integer>> constraintsList;
 	Properties propSum, propPercent;
 	InputStream inputSum, inputPercent;
 	private ArrayList<LinkedHashMap<String, String>> months;
-	private String storedMonth;
 	
 	
 	public LineChartPage(String userName){
@@ -48,6 +46,7 @@ public class LineChartPage {
 		setStage();
 		  
 		}
+	
 	private void fetchStoredCaloriePercents(){
 		
 		try{
@@ -59,13 +58,17 @@ public class LineChartPage {
 			io.printStackTrace();
 		}finally{
 			if (inputSum != null && inputPercent != null) {
-				try{
-					inputSum.close();
-					inputPercent.close();
-				}catch (IOException e){
-					e.printStackTrace();
-				}
+				closeStreams();
 			}
+		}
+	}
+	
+	private void closeStreams(){
+		try{
+			inputSum.close();
+			inputPercent.close();
+		}catch (IOException e){
+			e.printStackTrace();
 		}
 	}
 	
@@ -82,25 +85,40 @@ public class LineChartPage {
 	}
 	
 	private void propertiesIntoMap(){
-		Set<Object> keys = propSum.keySet();
-		ArrayList<Object> keysList = new ArrayList<>(keys);
+		makeMonthLists();
 		
+		iteratePropertyKeys();
+	}
+	
+	private void makeMonthLists(){
 		months = new ArrayList<>();
 		for (int i = 0; i < 12; i++){
 			months.add(new LinkedHashMap<String, String>());
 			
 		}
+	}
+	
+	private void iteratePropertyKeys(){
+		Set<Object> keys = propSum.keySet();
+		ArrayList<Object> keysList = new ArrayList<>(keys);
 		
 		for (int i = 0; i < keysList.size(); i++){
 			String date = keysList.get(i).toString();
+			String percent = propPercent.getProperty(date);
+			
 			String day = date.substring(4, 6);
 			storedMonth = date.substring(0, 2);
-			String percent = propPercent.getProperty(date);
+			
 			String[] percentSplit = new String[2];
 			percentSplit = percent.split("\\.");
-			String percent1 = (percentSplit[0]);
-			months.get(Integer.parseInt(storedMonth)-1).put(day, percent1);
+			String percentNoDecimal = (percentSplit[0]);
+			
+			months.get(correspondingMonthArray()).put(day, percentNoDecimal);
 		}
+	}
+	
+	private Integer correspondingMonthArray(){
+		return Integer.parseInt(storedMonth)-1;
 	}
 	
 	private void createLineChart(){

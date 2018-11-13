@@ -175,7 +175,7 @@ public class UserData {
 		OutputStream output = null;
 		FileInputStream file;
 		
-		try {System.out.println(registerName + ".properties");
+		try {
 			file = new FileInputStream(registerName + ".properties");
 			prop.load(file);
 		} catch (IOException e1) {
@@ -185,7 +185,6 @@ public class UserData {
 		if (!prop.isEmpty()){
 			createErrorAlert("User Exists", "Error, User is already in system");
 		}
-		
 		else{
 			try {
 				
